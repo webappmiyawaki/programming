@@ -125,6 +125,25 @@ for d in [d1, d2, d3]:
     new_d.update(d) 
 print(f'連結した辞書：{new_d}')
 
+# セット連結（開封）
+d1 = {'A': 111, 'B': 222, 'C': 333}
+d2 = {'D': 444, 'E': 555}
+d3 = {'F': 666}
+new_d = {**d1, **d2, **d3}   
+print(f'連結した辞書：{new_d}')
+
+# keyがあるか
+d = {'A': 111, 'B': 222, 'C': 333}
+result = 'A' in d.keys()
+print(f'Aは辞書に含まれているか：{result}')
+
+# リストからkeyセット
+keys = ['A', 'B', 'C']
+values = [111, 222, 333]
+new_d = {}
+[new_d.update({k: v}) for k, v in zip(keys, values)]
+print(new_d)
+
 # 重複除外
 l1 = [1, 2, 3, 4, 5]
 l2 = [7, 6, 5, 4]
@@ -142,6 +161,23 @@ print(f'どちらか一方に格納されている要素 : {r}')
 # 集合が含まれているか
 print(f'l1はl2に含まれている : {set(l1).issubset(set(l2))}')
 print(f'l2はl1に含まれている : {set(l2).issubset(set(l1))}')
+
+# keyで並び替え
+d = {'B': 222, 'A': 111, 'D': 444, 'C': 333}
+sort_by_key = dict(sorted(d.items()))
+print(f'keyでソートした辞書：{sort_by_key}')
+
+# valueで並び替え
+d = {'B': 222, 'A': 111, 'D': 333, 'C': 444}
+sort_by_value = dict(sorted(d.items(), key=lambda x: x[1]))
+print(f'Valueでソートした辞書：{sort_by_value}')
+
+#（詳細）lambda関数 x: x[1]と同義
+def get_values(x):
+    return x[1]
+d = {'B': 222, 'A': 111, 'D': 333, 'C': 444}
+sort_by_value = dict(sorted(d.items(), key=get_values))
+print(f'Valueでソートした辞書：{sort_by_value}')
 
 
 # スライド　sequence[start:stop:step]
