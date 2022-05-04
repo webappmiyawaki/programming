@@ -1,0 +1,44 @@
+test {
+    color:red;
+    line-height:"";
+    size:"";
+    font-size:"";
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+tr{
+    background-color: #e90000;
+}
+pDay{
+    font-size:40px;
+}
+p1 {
+    background-color:pink;
+    line-height:1.5;
+}
+
+h2 {
+    color:red;
+    line-height:1.5;
+}
+
+h3 {
+    color:orange;
+    line-height:1.5;
+}
+th{
+    background-color: mintcream;
+}
+table{
+    border: #262626;
+    aria-setsize:"200";
+    background-color: chartreuse;
+}
+div#child1{
+    background-color: gold;
+}
+div#child2{
+    background-color: silver;
+}

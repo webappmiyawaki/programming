@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+li{
+  padding:20px;
+}
+</style>
+<title>どこつぶサンプルの取り込み手順</title>
+</head>
+<body>
+
+<h1>どこつぶサンプルの取り込みと実行</h1>
+
+<h2>取り込み方法</h2>
+<ol>
+  <li>
+  プロジェクト・エクスプローラーの空いている箇所で右クリック→インポート→WARファイルを選択します。<br>
+  <img src="img/sample_import01.jpg">
+  </li>
+  <li>
+  開いた画面で、「参照」ボタンをクリックし、「docoTsubuSample.war」を選択し、「完了」ボタンをクリックします<br>
+　（docoTsubusSample.warは「どこつぶのサンプル」ディレクトリにあります）<br>
+  <img src="img/sample_import02.jpg"><br>
+　※上図はdocoTsubuSample.warがCドライブ直下にコピーした場合の例<br>
+　※先にサーバを作成しておいてください（ターゲット・ランタイムがApache Tomcat v7.0であることを確認してください）<br>
+
+  </li>
+  <li>
+  プロジェクト・エクスプローラーに動的Webプロジェクト「docoTsubuSample」が追加されます。<br>
+  <img src="img/sample_import03.jpg"><br>
+　※アプリケーション名が「docoTsubu」ではなく「docoTsubuSample」なので注意してください。
+
+  </li>
+
+  </li>
+  <li>
+  サーバビューでサーバを右クリック→追加および除去を選択します。開いた画面（下図）で「docoTsubuSample」をサーバに追加し、「完了」ボタンをクリックします<br>
+  <img src="img/sample_import04.jpg">
+  </li>
+</ol>
+
+<h2>実行方法</h1>
+<p>以下のいずれかの方法で実行します。
+<ul>
+  <li>ブラウザを起動し「http://localhost:8080/docoTsubuSample/」にリクエストする</li>
+  <li>動的Webプロジェクト「docoTsubuSample」を選択して、右クリック→実行→サーバーを選択する（Eclipseの実行機能）</li>
+</ul>
+
+<p><a href="01_最初にお読みください.html">マニュアルトップへ戻る</a></p>
+
+
+</body>
+</html>

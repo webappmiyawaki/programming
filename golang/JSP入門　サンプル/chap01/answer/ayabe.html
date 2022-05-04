@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>スッキリメンバーの紹介</title>
+    <style>
+        #child1 {
+            background-color: lightblue;
+        }
+        #child2 {
+            background-color: lightgreen;
+        }
+
+        @media (min-width: 600px) {
+            #parent {
+                display: flex;
+            }
+            #child1 {
+                flex-grow: 1;
+            }
+            #child2 {
+                flex-grow: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<link rel="stylesheet" href="chap01_test.css">
+<test>Red Heading</test>
+<h1 align="right">綾部　めぐみのプロフィール</h1>
+<h2>綾部　めぐみのプロフィール</h2>
+<h3>綾部　めぐみのプロフィール</h3>
+<h1 style="color: cornflowerblue;">綾部　めぐみのプロフィール</h1>
+<h1 style="color: black;">綾部　めぐみのプロフィール</h1>
+<table>
+    <tr bgcolor="silver">
+        <th>写真</th>
+        <th>プロフィール</th>
+    </tr>
+    <tr>
+        <td>
+            <img src="ayabe.jpg" width="" : height="" alt="綾部めぐみの写真">
+        </td>
+        <td>
+            <p>入社1年目の22歳。関西出身。入社時にはJavaの基礎はすでにマスターしており、新人研修は首席卒業。<br>
+                Webアプリケーションの開発経験はまだなく、湊と一緒に開発を命じられる。菅原の従妹。</p>
+        </td>
+    </tr>
+</table>
+<hr>
+<br><br><br>
+<div id="parent">
+    <div id="child1">子要素１</div>
+    <div id="child2">子要素２</div>
+</div>
+<hr>
+<a href="memberList.html">一覧へ戻る</a>
+</body>
+</html>

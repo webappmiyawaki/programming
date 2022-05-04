@@ -1,0 +1,73 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>お読みください</title>
+<style>
+table{
+width: 100%;
+  border-collapse: collapse;
+}
+th{
+  width: 25%;
+  padding: 6px;
+  text-align: left;
+  vertical-align: top;
+  color: #333;
+  background-color: #eee;
+  border: 1px solid #b9b9b9;
+}
+td{
+  padding: 6px;
+  background-color: #fff;
+  border: 1px solid #b9b9b9;
+}
+pre {
+  line-height:1.5;
+  border:1px solid #b9b9b9;
+  background:#eee;
+  padding: .5em;
+}
+</style>
+
+</head>
+<body>
+
+<h1>補足(リスト13-5~13-9)</h1>
+<h2>ファイルの取り込み先</h2>
+<table>
+<tr><th>ファイル名</th><th>取り込み先</th></tr>
+<tr><td>Main.java</td><td>docoTsubuプロジェクト/Javaリソース/src/servletパッケージ</td></tr>
+<tr><td>GetMutterListLogic.java</td><td>docoTsubuプロジェクト/Javaリソース/src/modelパッケージ</td></tr>
+<tr><td>Mutter.java</td><td>docoTsubuプロジェクト/Javaリソース/src/modelパッケージ</td></tr>
+<tr><td>MutterDAO.java</td><td>docoTsubuプロジェクト/Javaリソース/src/daoパッケージ</td></tr>
+<tr><td>PostMutterLogic.java</td><td>docoTsubuプロジェクト/Javaリソース/src<modelパッケージ/td></tr>
+</table>
+
+<h2>SQL</h2>
+<p>MUTTERテーブルを作成、レコードを追加、テーブルを削除するには次のSQLを使用してください。</p>
+<pre>
+-- MUTTERテーブルを作成するSQL
+CREATE TABLE MUTTER (
+ID INT PRIMARY KEY AUTO_INCREMENT ,
+NAME VARCHAR(100) NOT NULL,
+TEXT VARCHAR(255) NOT NULL
+);
+
+-- MUTTERテーブルにレコードを追加するSQL
+INSERT INTO MUTTER (NAME, TEXT) VALUES ('湊', '今日は休みだ');
+INSERT INTO MUTTER (NAME, TEXT) VALUES ('綾部', 'いいな～ ');
+
+-- MUTTERテーブルを削除するSQL(やり直し用）
+DROP TABLE MUTTER;
+</pre>
+
+<h2>その他</h2>
+<p>※H2 Databaseのインストール、SQLを実行する方法は、<a href="http://devnote.jp/H2" target="_blank">こちら</a>を参照してください</p>
+<p>※H2 DatabaseのJDBCドライバの配置方法は、本書付録A.6.1項を参照してください</p>
+
+<p>※各ファイルをEclipseに取り込む方法は、<a href="../../最初にお読みください/02_ファイルの取り込み方.html" target="_blank">こちら</a>を参照してください</p>
+<p>※各ファイルは内容はEclipseに取り込まなくても、メモ帳などのエディタソフトで見ることができます</p>
+<p>※パッケージは「srcディレクトリを右クリック→新規作成→パッケージ」で作成することができます</p>
+
+</body>
+</html>

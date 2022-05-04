@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>お読みください</title>
+<style>
+table{
+width: 100%;
+  border-collapse: collapse;
+}
+th{
+  width: 25%;
+  padding: 6px;
+  text-align: left;
+  vertical-align: top;
+  color: #333;
+  background-color: #eee;
+  border: 1px solid #b9b9b9;
+}
+td{
+  padding: 6px;
+  background-color: #fff;
+  border: 1px solid #b9b9b9;
+}
+pre {
+  line-height:1.5;
+  border:1px solid #b9b9b9;
+  background:#eee;
+  padding: .5em;
+}
+</style>
+
+</head>
+<body>
+
+<h1>補足(リスト14-1~14-11)</h1>
+<h2>各ファイルの取り込み先</h2>
+<table>
+<tr><th>ファイル名</th><th>取り込み先</th></tr>
+<tr><td>Account.java</td><td>sukkiriShopプロジェクト/Javaリソース/src/modelパッケージ</td></tr>
+<tr><td>AccountDAO.java</td><td>sukkiriShopプロジェクト/Javaリソース/src/daoパッケージ</td></tr>
+<tr><td>AccountDAOTest.java</td><td>sukkiriShopプロジェクト/Javaリソース/src/testパッケージ</td></tr>
+<tr><td>Login.java</td><td>sukkiriShopプロジェクト/Javaリソース/src/modelパッケージ</td></tr>
+<tr><td>login.jsp</td><td>sukkiriShopプロジェクト/WebContent/jsp</td></tr>
+<tr><td>LoginLogic.java</td><td>sukkiriShopプロジェクト/Javaリソース/src/modelパッケージ</td></tr>
+<tr><td>LoginLogicTest.java</td><td>sukkiriShopプロジェクト/Javaリソース/src/testパッケージ</td></tr>
+<tr><td>loginOK.jsp</td><td>sukkiriShopプロジェクト/WebContent/jsp</td></tr>
+<tr><td>LoginServlet.java</td><td>sukkiriShopプロジェクト/Javaリソース/src/servletパッケージ</td></tr>
+<tr><td>welcome.jsp</td><td>sukkiriShopプロジェクト/WebContent/jsp</td></tr>
+<tr><td>WelcomeServlet.java</td><td>sukkiriShopプロジェクト/Javaリソース/src/servletパッケージ</td></tr>
+</table>
+
+<h2>SQL</h2>
+<p>ACCOUNTテーブルを作成、レコードを追加、テーブルを削除するには次のSQLを使用してください。</p>
+<pre>
+-- ACCOUNTテーブルを作成するSQL
+CREATE TABLE ACCOUNT (
+  USER_ID CHAR(10) PRIMARY KEY,
+  PASS VARCHAR(10) NOT NULL,
+  MAIL VARCHAR(100) NOT NULL,
+  NAME VARCHAR(40) NOT NULL,
+  AGE INT NOT NULL
+);
+
+-- ACCOUNTテーブルにレコードを追加するSQL
+INSERT INTO ACCOUNT (USER_ID, PASS, MAIL, NAME, AGE) VALUES('minato', '1234', 'minato@sukkiri.com', '湊 雄輔', 23);
+
+-- ACCOUNTテーブルを削除するSQL(やり直し用）
+DROP TABLE ACCOUNT;
+</pre>
+
+<h2>その他</h2>
+<p>※H2 Databaseのインストール、SQLを実行する方法は、<a href="http://devnote.jp/H2" target="_blank">こちら</a>を参照してください</p>
+<p>※H2 DatabaseのJDBCドライバの配置方法は、本書付録A.6.1項を参照してください</p>
+<p>※JSTLのインストール方法は、<a href="http://devnote.jp/JSTL">こちら</a>を参照してください</p>
+<p>※各ファイルをEclipseに取り込む方法は、<a href="../../最初にお読みください/02_ファイルの取り込み方.html" target="_blank">こちら</a>を参照してください</p>
+<p>※各ファイルは内容はEclipseに取り込まなくても、メモ帳などのエディタソフトで見ることができます</p>
+<p>※パッケージは「srcディレクトリを右クリック→新規作成→パッケージ」で作成することができます</p>
+</body>
+</html>

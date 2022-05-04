@@ -1,0 +1,490 @@
+﻿/*
+ * Font
+ *   .tt : monospace
+ *   .nb : not bold
+ *   .b  : bold
+ *   .mr : Meiryo UI
+ *   .con : Consolas
+ *   .sm : small
+ * Color
+ *   .red : red font
+ *   .green : green font
+ *   .blue : blue-font
+ * Multicolmn
+ *   .clearfix : clearfix
+ *   .col3 : multi-columns
+ *   .col3 : multi-columns
+ * Width
+ *   .w100 : width 100%
+ * Border
+ *   .bo : border
+ * Layout
+ *   .i : indent
+ *   .ce : center
+ *   .r : right
+ *   .l : left
+ *   .nw : nowrap
+ *   .mb1 : margin bottom 1em
+ *   .mt1 : margin top 1em
+ * Flex
+ *   .flex : flex
+ * List
+ *   .nomark : no mark
+ *   .dl1 : data list
+ *   .sl : slash list
+ * Semantics
+ *   .cm : comment
+ *   .success : success
+ *   .info : information
+ *   .warning : warning
+ *   .caution : caution
+ *   .index-title: index-title
+ * Code
+ *   .tab : tab
+ *   .c : code box
+ *   .c2 : code box with tab
+ *   .dos : dos command
+ * Table
+ *   .tb0 : table
+ *   .tb1 : table
+ *   .vl : table vertical line (with .tb1)
+ * Reset
+ *   .reset : reset
+ * Multicolumn
+ *   .mcol3 : Multicolumn 3
+ *   .mcol4 : Multicolumn 4
+ * Margin
+ *   .mt1 : margin-top: 1em
+ */
+
+/* Font */
+body {
+  x-font-family: "Helvetica Neue", "Hiragino Kaku Gothic ProN", "メイリオ", sans-selif;
+  font-family: sans-selif;
+}
+p {
+  x-font-family: Consolas, "Helvetica Neue", "Hiragino Kaku Gothic ProN", "メイリオ", sans-selif;
+  font-family: Consolas, sans-selif;
+}
+pre, code {
+  font-family: Menlo, Consolas, "Hiragino Kaku Gothic ProN", Meiryo, monospace;
+}
+.teletype, .tt {
+  font-family: Consolas, 'Courier New', 'ＭＳ ゴシック', monospace !important;
+}
+.notbold, .nb {
+  font-weight: normal;
+}
+.b {
+  font-weight: bold;
+}
+.meiryo, .mr {
+  font-family: 'Meiryo UI';
+}
+.con {
+  font-family: 'Consolas';
+}
+.sm {
+  font-size: 80%;
+}
+
+/* Color */
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.blue {
+  color: blue;
+}
+
+/* Global */
+html {
+  scroll-behavior: smooth;
+  background-color: #f0f0f0;
+}
+body {
+  font-size: 10.3pt;
+  margin: 0 auto 0 auto;
+  max-width: 898px;
+  min-height: 940px;
+  background-color: #fff;
+  padding: .5rem 1rem 0rem 1rem;
+}
+@media (max-width: 767px) {
+    body {
+        padding: .5em .5em;
+    }
+}
+h2 {
+  font-size: 18pt;
+  padding: 6px;
+  margin: 0 0 8px 0;
+  border-bottom: 4px solid #469;
+}
+h2::before {
+  content: url("image/popase.gif") " ";
+}
+h3 {
+  padding: 0 0 0 4px;
+  font-size: 16pt;
+  border-left: 6px solid #469;
+  border-bottom: 1px solid #469;
+}
+h4 {
+  x-margin: 1em 0 1em 0;
+  font-size: 14pt;
+  x-border-left: 6px solid #469;
+  border-bottom: 1px solid #aaa;
+  x-padding: 1px 3px 0px 8px;
+}
+h5 {
+  font-size: 107%;
+  margin: 0;
+}
+h5 i, h5 tt {
+  font-weight: normal;
+  font-family: inherit;
+}
+.reset h1, .reset h2, .reset h3, .reset h4, .reset h5, .reset h6,
+h1.reset, h2.reset, h3.reset, h4.reset, h5.reset, h6.reset {
+  margin: .5em 0;
+  padding: 0;
+  border: none;
+}
+.reset h1, h1.reset {
+  font-size: 2em;
+}
+.reset h2, h2.reset {
+  font-size: 1.5em;
+}
+.reset h2::before, h2.reset::before {
+  content: "";
+}
+.reset h3, h3.reset {
+  font-size: 1.17em;
+}
+.reset h4, h4.reset {
+  font-size: 1em;
+}
+.reset h5, h5.reset {
+  font-size: .83em;
+}
+.reset h6, h6.reset {
+  font-size: .67em;
+}
+
+p {
+  margin: .7em 0 .7em 0;
+}
+ul {
+  x-margin-left: -1em;
+  padding-left: 2em;
+}
+em {
+  color: #d00;
+  font-weight: bold;
+  font-style: normal;
+}
+.reset em, em.reset {
+  color: inherit;
+  font-style: italic;
+}
+a:link, a:visited {
+  color: #113366;
+}
+a:hover {
+  color: #f00;
+}
+.reset a::hover, a.reset:hover {
+  color: inherit;
+}
+small {
+    font-size: 75%;
+}
+big {
+    font-size: 120%;
+}
+
+/* Multicolmn */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix .col3 {
+  width: 22%;
+  float: left;
+  padding-right: 10px;
+}
+.clearfix .col6 {
+  width: 47%;
+  float: left;
+  padding-right: 10px;
+}
+
+/* Width */
+.w100 {
+  width: 100%;
+}
+
+/* Border */
+.border, .bo {
+  border: 1px solid gray;
+}
+
+/* Layout */
+.indent, .i {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.center, .ce {
+  text-align: center;
+}
+.r {
+  text-align: right;
+}
+.l {
+  text-align: left;
+}
+.nowrap, .nw {
+  white-space: nowrap;
+}
+.mt1 {
+  margin-top: 1em;
+}
+.mb1 {
+  margin-bottom: 1em;
+}
+.ml1 {
+  margin-left: 1em;
+}
+.mr1 {
+  margin-right: 1em;
+}
+
+/* Flexbox */
+.flex {
+  display: flex;
+}
+.flex .flex-item {
+  margin-right: 1rem;
+}
+
+/* List */
+.nomark {
+  list-style-type: none;
+  x-margin-top: 0;
+  x-margin-left: -1em;
+}
+.ol1 {
+  padding-left: 1.5rem;
+}
+.dl1 dt {
+  margin-top: 1em;
+  font-weight: bold;
+}
+.dl1 dt i {
+  font-weight: normal;
+  font-family: "Consolas";
+}
+.dl1 dd {
+  margin-left: 1em;
+}
+.sl {
+  margin-left: 0;
+  padding: 0;
+}
+.sl li {
+  display: inline-block;
+  padding: 0 .2rem 0 .2rem;
+}
+.sl li::after {
+  content: "/";
+}
+.sl li:last-child::after {
+  content: "";
+}
+
+/* Semantics */
+.cm {
+  color: #666;
+}
+.success {
+  margin: 1em 0 1em 0;
+  padding: 8px;
+  background-color: #dfd;
+  border: 1px solid #ada;
+  color: #363;
+}
+.info {
+  margin: 1em 0 1em 0;
+  padding: 8px;
+  background-color: #eee;
+  border: 1px solid #c1c1c1;
+  color: #000;
+}
+.warning {
+  margin: 1em 0 1em 0;
+  padding: 8px;
+  background-color: #ffd;
+  border: 1px solid #dda;
+  color: #442;
+}
+.caution {
+  margin: 1em 0 1em 0;
+  padding: 8px;
+  background-color: #fdd;
+  color: #c33;
+}
+.caution a {
+  color: #c33;
+}
+.index-title {
+  margin: .5em 0 .1em 0;
+  padding: .2em;
+  color: #fff;
+  font-weight: bold;
+  background-color: #469;
+  text-align: center;
+}
+
+/* Code */
+.title-tab, .tab {
+  margin: .5em 0 0 0;
+  display: inline-block;
+  vertical-align: bottom;
+  padding: 0 .7em 0 .7em;
+  font-size: 6pt;
+  border-top: 1px solid #c1c1c1;
+  border-right: 1px solid #c1c1c1;
+  border-left: 1px solid #c1c1c1;
+  border-radius: 4px 4px 0 0;
+  color: #456;
+  text-align: center;
+  font-weight: bold;
+  background-color: #d8e0f0;
+}
+.c, .c2, .dos {
+  margin: 1em 0 1em 0;
+  border: 1px solid #c1c1c1;
+  border-radius: 0px 2px 2px 2px;
+  padding: 5px;
+  background-color: #fafafa;
+  overflow: auto;
+  font-family: Consolas, 'Meiryo UI', 'Courier New', Monaco, monospace;
+  font-size: 10.5pt;
+}
+.c2 {
+  margin: 0 0 1em 0;
+}
+.dos {
+  background-color: #333;
+  color: #fff;
+}
+.dos em {
+  color: #f88;
+}
+.dos .cm {
+  color: #888;
+}
+
+/* Table */
+.tb0, .tb1 {
+  margin: 1em 0 1em 0;
+  border-collapse: collapse;
+}
+.tb1 {
+  width: 100%;
+}
+.tb1 caption {
+  text-align: left;
+}
+.tb0 th, .tb0 td, .tb1 th, .tb1 td {
+  padding: 2px 4px 2px 4px;
+  vertical-align: top;
+}
+.tb0 th, .tb0 td {
+  border: 1px solid #999;
+}
+.tb1 th, table.tb1 td {
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+}
+.tb0 th, .tb1 th {
+  background-color: #d8e0f0;
+  color: #456;
+  font-weight: bold;
+}
+.tb1 th {
+  text-align: left;
+}
+.tb1.vl th, .tb1.vl td {
+  border: 1px solid #999;
+}
+.tb1.js {
+  width: unset;
+}
+
+/* HTML Reference */
+.htmlelem {
+  background-color: #e0eeff;
+  padding: 6px 6px 12px 6px;
+}
+.htmlelem dt {
+  margin-top: .6em;
+  font-weight: bold;
+}
+.htmlelem dt:first-child {
+  margin-top: 0;
+}
+.htmlelem dd {
+  margin-left: 2em;
+}
+.htmlattr dt {
+  margin-top: 1em;
+  font-weight: bold;
+}
+.htmlattr dt i {
+  font-weight: normal;
+}
+.htmlattr dd {
+  margin-left: 2em;
+}
+.htmlvalue dt {
+  margin-top: 0;
+  font-weight: bold;
+}
+
+/* Multicolumn */
+.mcol3 {
+  columns: 3;
+}
+.mcol4 {
+  columns: 4;
+}
+
+/* Margin */
+.mt1 {
+  margin-top: 1em;
+}
+
+/* CSS Reference */
+.csssum th {
+  width: 120px;
+  text-align: center;
+}
+.csssum td {
+  font-family: 'Consolas', 'Meiryo UI';
+}
+.csssup {
+  table-layout: fixed;
+}
+
+/* Screen Reader */
+.nsr { /* No Screen Reader */
+  speak: none;
+}

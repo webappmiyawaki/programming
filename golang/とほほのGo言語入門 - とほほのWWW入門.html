@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://www.tohoho-web.com/ex/golang.html -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>とほほのGo言語入門 - とほほのWWW入門</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="./とほほのGo言語入門 - とほほのWWW入門_files/style3.css">
+</head>
+<body>
+<h2>とほほのGo言語入門</h2>
+<a href="https://www.tohoho-web.com/www.htm">トップ</a> &gt;
+とほほのGo言語入門
+
+<h4 id="index">目次</h4>
+<div class="i">
+<ul>
+<li><a href="https://www.tohoho-web.com/ex/golang.html#about">Go言語とは</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#versions">バージョン</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#install">インストール</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#hello-world">Hello world</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#print">Print・Println・Printf</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#variables">変数(var)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#const">定数(const)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#comments">コメント</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#semicolons">行末のセミコロン</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#keywords">キーワード</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#types">型(type)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#type-convert">型変換</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#operators">演算子</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#literals">リテラル・値</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#escape-sequence">エスケープシーケンス</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#array">配列(array)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#slice">スライス(slice)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#map">マップ(map)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#if">If文(if)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#switch">Switch文(switch)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#for">For文(for)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#goto">Goto文(goto)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#functions">関数(func)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#structures">構造体(struct)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#interfaces">インタフェース(interface)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#interface-any">interface {}型</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#pointer">ポインタ(pointer)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#new">領域確保(new)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#defer">遅延実行(defer)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#import">インポート(import)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#package">パッケージ(package)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#goroutines">ゴルーチン(Goroutine)</a>
+</li><li><a href="https://www.tohoho-web.com/ex/golang.html#links">リンク</a>
+</li></ul>
+</div>
+
+<h4 id="about">Go言語とは</h4>
+<div class="i">
+<ul>
+<li>Google が開発したプログラミング言語です。「<b>Go言語</b>」や「<b>Golang</b>」と表記されます。
+</li><li>UNIX、B言語(C言語の元)、UTF-8の開発者ケン・トンプソンや、UNIX、Plan 9、UTF-8の開発者ロブ・パイクによって設計されました。
+</li><li>静的型付け、メモリ安全性、ガベージコレクションを備えるコンパイル言語です。
+</li><li>シンプル、高速、メモリ効率が良い、メモリ破壊が無い、並行処理が得意などの特徴を備えています。
+</li><li>メモリ破壊が無く、並行処理を得意とする、進化したC言語という側面があります。
+</li><li>Linux、Mac OS X、Windows、Android、iOS で動作します。
+</li></ul>
+</div>
+
+<h4 id="versions">バージョン</h4>
+<div class="i">
+<p>おおよそ半年に一度バージョンアップを行っているようです。このページは Go 1.14 をターゲットに記述しています。</p>
+<ul>
+<li><a target="_top" href="https://go.dev/blog/go1.18">Go 1.18</a> 2022年3月15日<br>
+速度改善、ジェネリクス、ファジングテストツール、ワークスペースモード、any型、~演算子、comparable識別子など。
+</li><li><a target="_top" href="https://go.dev/blog/go1.17">Go 1.17</a> 2021年8月16日<br>
+Windows/arm64 サポート、など。
+</li><li><a target="_top" href="https://go.dev/blog/go1.16">Go 1.16</a> 2021年2月16日
+</li><li><a target="_top" href="https://go.dev/blog/go1.15">Go 1.15</a> 2020年8月11日
+</li><li><a target="_top" href="https://go.dev/blog/go1.14">Go 1.14</a> 2020年2月25日
+</li><li><a target="_top" href="https://go.dev/blog/go1.13">Go 1.13</a> 2019年9月3日
+</li><li><a target="_top" href="https://go.dev/blog/go1.12">Go 1.12</a> 2019年2月25日
+</li><li><a target="_top" href="https://go.dev/blog/go1.11">Go 1.11</a> 2018年8月24日
+</li><li><a target="_top" href="https://go.dev/blog/go1.10">Go 1.10</a> 2018年2月16日
+</li><li><a target="_top" href="https://go.dev/blog/go1.9">Go 1.9</a> 2018年8月24日
+</li><li><a target="_top" href="https://go.dev/blog/go1.8">Go 1.8</a> 2017年2月16日
+</li><li><a target="_top" href="https://go.dev/blog/go1.7">Go 1.7</a> 2016年8月15日
+</li><li><a target="_top" href="https://go.dev/blog/go1.6">Go 1.6</a> 2016年2月17日
+</li><li><a target="_top" href="https://go.dev/blog/go1.5">Go 1.5</a> 2015年8月19日
+</li><li><a target="_top" href="https://go.dev/blog/go1.4">Go 1.4</a> 2014年12月10日
+</li><li><a target="_top" href="https://go.dev/blog/go1.3">Go 1.3</a> 2014年6月18日
+</li><li><a target="_top" href="https://go.dev/doc/go1.2">Go 1.2</a> 2013年12月1日
+</li><li><a target="_top" href="https://go.dev/doc/go1.1">Go 1.1</a> 2013年5月13日
+</li><li><a target="_top" href="https://go.dev/doc/go1">Go 1.0</a> 2012年3月28日
+</li></ul>
+</div>
+
+<h4 id="install">インストール</h4>
+<div class="i">
+<p>ちょっとだけ試してみるには <a target="_top" href="https://play.golang.org/">The Go Playground</a> も使用できますが、ローカル環境にインストールするには下記の通り。</p>
+<pre class="c"><span class="cm"># CentOS 7</span>
+# yum install -y epel-release
+# yum install -y golang
+# go version
+go version go1.16.13 linux/amd64
+
+<span class="cm"># CentOS 8</span>
+# dnf install -y golang
+
+<span class="cm"># Ubuntu 20.04 LTS  タイムゾーンには Asia/Tokyo を選択</span>
+$ sudo apt-get install -y golang
+
+<span class="cm"># Linux(最新版) from</span> <a href="https://golang.org/dl/">https://golang.org/dl/</a>
+<span class="cm"># 1.18をインストールする例</span>
+# wget https://go.dev/dl/go1.18.linux-amd64.tar.gz
+# tar zxvf go1.18.linux-amd64.tar.gz -C /usr/local
+# export PATH=$PATH:/usr/local/go/bin
+</pre>
+</div>
+
+<h4 id="hello-world">Hello world</h4>
+<div class="i">
+<p>プログラムの拡張子は .go とします。プログラムは main パッケージの main 関数から実行されます。</p>
+<pre class="c">package main		<span class="cm">// mainパッケージであることを宣言</span>
+
+import "fmt"		<span class="cm">// fmtモジュールをインポート</span>
+
+func main() {		<span class="cm">// 最初に実行されるmain()関数を定義</span>
+    fmt.Println("hello, world")
+}
+</pre>
+<p>直接実行するには <b>go run</b> コマンドを使用します。</p>
+<pre class="c">$ <em>go run sample.go</em>
+Hello, world!
+</pre>
+<p>コンパイルするには <b>go build</b> コマンドを使用します。実行形式のファイル sample が作成されます。</p>
+<pre class="c">$ <em>go build sample.go</em>
+$ <em>./sample</em>
+Hello, world!
+</pre>
+<p>ソースを標準のコーディングスタイルに整形するには <b>gofmt</b> を使用します。標準スタイルでは、インデントはスペースではなくタブ文字を使用します。</p>
+<pre class="c">$ <em>gofmt sample.go</em>
+</pre>
+</div>
+
+<h4 id="print">Print・Println・Printf</h4>
+<div class="i">
+<p><b>fmt.Print()</b> は引数を文字列として出力します。<b>fmt.Println()</b> は引数の間にスペースを入れ、最後に改行文字 "\n" を出力します。<b>fmt.Printf()</b> は %d (数値) や %s (文字列) などのフォーマットを指定して引数を出力することができます。</p>
+<pre class="c">num := 123
+str := "ABC"
+
+fmt.Print("num=", num, " str=", str, "\n")	<span class="cm">// 改行無し、空白無し、フォーマット無し</span>
+fmt.Println("num =", num, "str =", str)	<span class="cm">// 改行有り、空白有り、フォーマット無し</span>
+fmt.Printf("num=%d str=%s\n", num, str)	<span class="cm">// 改行無し、空白無し、フォーマット有り</span>
+</pre>
+<p>Printf() のフォーマットには下記を使用できます。%4d とすると 4桁整数、%04d とすると 0埋め4桁整数で出力します。</p>
+<div class="c">
+<b>%v</b>(デフォルト形式)、<b>%#v</b>(Go言語表記)、<b>%t</b>(真偽値)、<b>%d</b>(整数)、<b>%s</b>(文字列)、<b>%c</b>(文字)、<b>%f</b>(小数)、<b>%F</b>(小数)、<b>%e</b>(浮動小数点数e)、<b>%E</b>(浮動小数点数E)、<b>%g</b>(%f/%e自動選択)、<b>%b</b>(2進数)、<b>%o</b>(8進数)、<b>%O</b>(0o付き8進数)、<b>%x</b>(16進数)、<b>%X</b>(16進数大文字)、<b>%U</b>(Unicode)、<b>%p</b>(ポインタ)、<b>%q</b>("..."付き文字列)、<b>%T</b>(型表示)、<b>%%</b>(パーセント)
+</div>
+</div>
+
+<h4 id="variables">変数(var)</h4>
+<div class="i">
+<p><b>var</b> は 「var 変数名 型名」の形式で変数を定義します。</p>
+<pre class="c"><em>var a1 int</em>
+</pre>
+<p>初期値を指定することができます。初期値を省略すると 0 や空文字列 "" などで初期化されます。</p>
+<pre class="c"><em>var a1 int = 123</em>
+</pre>
+<p>初期値により型名が明白な場合は型名を省略することもできます。</p>
+<pre class="c"><em>var a2 = 123</em>
+</pre>
+<p>初期値を指定する場合は、<b>:=</b> を用いると <b>var</b> も省略することができます。</p>
+<pre class="c"><em>a3 := 123</em>
+</pre>
+<p>下記の様にまとめて定義することもできます。</p>
+<pre class="c"><em>var (</em>
+    a1 int = 123
+    a2 int = 456
+<em>)</em>
+</pre>
+<p>演算子 <b>=</b> は、右辺の値を左辺の変数に代入します。</p>
+<pre class="c"><em>a1 = 456</em>
+</pre>
+<p>複数の値を同時に代入することもできます。</p>
+<pre class="c"><em>name, age = "Yamada", 26</em>
+</pre>
+</div>
+
+<h4 id="const">定数(const)</h4>
+<div class="i">
+<p><b>const</b> は定数を定義します。定数の場合は型名は省略可能で、多くの場合指定しません。</p>
+<pre class="c"><em>const foo = 100</em>
+</pre>
+<p>下記の様にまとめて定義することもできます。</p>
+<pre class="c"><em>const (</em>
+    foo = 100
+    baa = 200
+<em>)</em>
+</pre>
+</div>
+
+<h4 id="comments">コメント</h4>
+<div class="i">
+<p><b>// ...</b> 形式、または、<b>/* ... */</b> 形式のコメントを書くことができます。コメントはコンパイルの際に無視されます。</p>
+<pre class="c"><em>//</em> ここはコメントです
+<em>/*</em> ここも
+   コメントです <em>*/</em>
+</pre>
+</div>
+
+<h4 id="semicolons">行末のセミコロン</h4>
+<div class="i">
+<p>行末にはセミコロン(<b>;</b>)を書きますが、ほとんどの場合省略することができます。セミコロンを書くことで複数の文を1行に記述することができます。</p>
+<pre class="c">num = 123<em>;</em> str = "ABC"<em>;</em>
+</pre>
+</div>
+
+<h4 id="keywords">キーワード</h4>
+<div class="i">
+<pre class="c"><a href="https://www.tohoho-web.com/ex/golang.html#for">break</a>        <a href="https://www.tohoho-web.com/ex/golang.html#switch">default</a>      <a href="https://www.tohoho-web.com/ex/golang.html#functions">func</a>         <a href="https://www.tohoho-web.com/ex/golang.html#interfaces">interface</a>    <a href="https://www.tohoho-web.com/ex/golang.html#goroutines">select</a>
+<a href="https://www.tohoho-web.com/ex/golang.html#switch">case</a>         <a href="https://www.tohoho-web.com/ex/golang.html#defer">defer</a>        <a href="https://www.tohoho-web.com/ex/golang.html#goroutines">go</a>           <a href="https://www.tohoho-web.com/ex/golang.html#map">map</a>          <a href="https://www.tohoho-web.com/ex/golang.html#structures">struct</a>
+<a href="https://www.tohoho-web.com/ex/golang.html#goroutines">chan</a>         <a href="https://www.tohoho-web.com/ex/golang.html#if">else</a>         <a href="https://www.tohoho-web.com/ex/golang.html#goto">goto</a>         <a href="https://www.tohoho-web.com/ex/golang.html#package">package</a>      <a href="https://www.tohoho-web.com/ex/golang.html#switch">switch</a>
+<a href="https://www.tohoho-web.com/ex/golang.html#const">const</a>        <a href="https://www.tohoho-web.com/ex/golang.html#switch">fallthrough</a>  <a href="https://www.tohoho-web.com/ex/golang.html#if">if</a>           <a href="https://www.tohoho-web.com/ex/golang.html#for">range</a>        <a href="https://www.tohoho-web.com/ex/golang.html#types">type</a>
+<a href="https://www.tohoho-web.com/ex/golang.html#for">continue</a>     <a href="https://www.tohoho-web.com/ex/golang.html#for">for</a>          <a href="https://www.tohoho-web.com/ex/golang.html#import">import</a>       <a href="https://www.tohoho-web.com/ex/golang.html#functions">return</a>       <a href="https://www.tohoho-web.com/ex/golang.html#variables">var</a>
+</pre>
+</div>
+
+<h4 id="types">型(type)</h4>
+<div class="i">
+<pre class="c"><b>bool</b>				真偽値(<b>true</b> or <b>false</b>)
+<b>int8</b>/<b>int16</b>/<b>int32</b>/<b>int64</b>		nビット整数
+<b>uint8</b>/<b>uint16</b>/<b>uint32</b>/<b>uint64</b>	nビット非負整数
+<b>float32</b>/<b>float64</b>		nビット浮動小数点数
+<b>complex64</b>/<b>complex128</b>		nビット虚数
+<b>byte</b>				1バイトデータ(uint8と同義)
+<b>rune</b>				1文字(int32と同義)
+<b>uint</b>				uint32 または uint64
+<b>int</b>				int32 または int64
+<b>uintptr</b>				ポインタを表現するのに十分な非負整数
+<b>string</b>				文字列
+</pre>
+<p>下記の様に型に別名をつけることができます。型の異なる値を代入することはできません。</p>
+<pre class="c"><em>type UtcTime string</em>		<span class="cm">// string型の別名 UtcTime を定義</span>
+<em>type JstTime string</em>		<span class="cm">// string型の別名 JstTime を定義</span>
+var t1 UtcTime = "00:00:00"
+var t2 JstTime = "09:00:00"
+t1 = t2				<span class="cm">// 型が異なるので代入エラー</span>
+</pre>
+<p>下記の様にまとめて定義することもできます。</p>
+<pre class="c"><em>type (</em>
+    UtcTime string
+    JstTime string
+<em>)</em>
+</pre>
+</div>
+
+<h4 id="type-convert">型変換</h4>
+<div class="i">
+<p><b>型名()</b> で型変換を行うことができます。</p>
+<pre class="c">var a1 uint16 = 1234
+var a2 uint32 = <em>uint32(a1)</em>
+</pre>
+</div>
+
+<h4 id="operators">演算子</h4>
+<div class="i">
+<pre class="c">x <b>+</b> y		加算 (文字列の連結にも利用)
+x <b>-</b> y		減算
+x <b>*</b> y		乗算
+x <b>/</b> y		除算
+x <b>%</b> y		除算の余り
+x <b>&amp;</b> y		論理積(AND)
+x <b>|</b> y		論理和(OR)
+x <b>^</b> y		排他的論理和(XOR)
+x <b>&amp;^</b> y		x AND (NOT y)
+x <b>&lt;&lt;</b> y		yビット左にシフト
+x <b>&gt;&gt;</b> y		yビット右にシフト
+x <b>=</b> y		xにyを代入
+x <b>:=</b> y		xにyを代入(初期化の使用可能)
+x<b>++</b>		x = x + 1 と同義
+x<b>--</b>		x = x - 1 と同義
+x <b>+=</b> y		x = x + y と同義
+x <b>-=</b> y		x = x - y と同義
+x <b>*=</b> y		x = x * y と同義
+x <b>/=</b> y		x = x / y と同義
+x <b>%=</b> y		x = x % y と同義
+x <b>&amp;=</b> y		x = x &amp; y と同義
+x <b>|=</b> y		x = x | y と同義
+x <b>^=</b> y		x = x ^ y と同義
+x <b>&amp;^=</b> y		x = x &amp;^ y と同義
+x <b>&lt;&lt;=</b> y		x = x &lt;&lt; y と同義
+x <b>&gt;&gt;=</b> y		x = x &gt;&gt; y と同義
+x <b>&amp;&amp;</b> y		xかつy(AND)
+x <b>||</b> y		xまたはy(OR)
+<b>!</b>x		xがtrueの場合false/falseの場合true(NOT)
+x <b>==</b> y		xとyが等しければ
+x <b>!=</b> y		xとyが等しくなければ
+x <b>&lt;</b> y		yがxより大きければ
+x <b>&lt;=</b> y		yがx以上であれば
+x <b>&gt;</b> y		yがxより小さければ
+x <b>&gt;=</b> y		yがx以下であれば
+ch <b>&lt;-</b> x		chチャネルにxを送信
+x <b>=&lt;-</b> ch	chチャネルからxに受信
+</pre>
+</div>
+
+<h4 id="literals">リテラル・値</h4>
+<div class="i">
+<pre class="c"><b>nil</b>		無しを示す特別な値
+<b>true</b>		真偽値の真
+<b>false</b>		真偽値の偽
+1234		整数
+1_234		整数(カンマ区切りの代わりに_を使用。_は無視される)
+0777		8進数
+0o755		8進数(0Oも可)
+0x89ab		16進数(0Xも可)
+0b1111		2進数(0Bも可)
+123.4		小数
+1.23e4		浮動小数点数(1.23E4も可)
+1.23i		虚数
+"ABC"		文字列
+'A'		文字(rune)
+</pre>
+</div>
+
+<h4 id="escape-sequence">エスケープシーケンス</h4>
+<div class="i">
+<p>文字列や文字の中では下記のエスケープシーケンスを使用することができます。</p>
+<pre class="c">\a		ベル(U+0007)
+\b		バックスペース(U+0008)
+\t		タブ(U+0009)
+\n		改行(U+000A)
+\v		垂直タブ(U+000B)
+\f		フォームフィード(U+000C)
+\r		キャリッジリターン(U+000D)
+\"		ダブルクォート(U+0022)
+\'		シングルクォート(U+0027)
+\\		バックスラッシュ(U+005C)
+\x42		ASCII文字(U+0000～U+00FF)
+\u30A2		Unicode(U+0000～U+FFFF)
+\U0001F604	Unicode(U+0000～U+10FFFF)
+</pre>
+</div>
+
+<h4 id="array">配列(array)</h4>
+<div class="i">
+<p>コンパイル時に個数が決まっていて変更不可のものを <b>配列</b> と言います。型名の前に <b>[</b>個数<b>]</b> をつけて宣言します。配列のインデックスは 0 からはじまります。途中で個数を変更することはできませんが、メモリ効率や性能の点で優れています。</p>
+<pre class="c"><em>a1 := [3]string{}</em>
+a1[0] = "Red"
+a1[1] = "Green"
+a1[2] = "Blue"
+fmt.Println(a1[0], a1[1], a1[2])
+</pre>
+<p>初期化時に値を設定することもできます。</p>
+<pre class="c"><em>a1 := [3]string{"Red", "Green", "Blue}</em>
+</pre>
+<p>初期化によって個数が決まる場合は、個数を <b>...</b> と省略することができます。</p>
+<pre class="c"><em>a1 := [...]string{"Red", "Green", "Blue"}</em>
+</pre>
+</div>
+
+<h4 id="slice">スライス(slice)</h4>
+<div class="i">
+<p>メモリ効率や速度は若干落ちますが、個数を変更可能なものを <b>スライス</b> と呼びます。型名の前に <b>[]</b> をつけて宣言します。スライスには <b>append()</b> を用いて要素を追加します。</p>
+<pre class="c"><em>a1 := []string{}</em>			<span class="cm">// スライス。個数不定</span>
+a1 = append(a1, "Red")
+a1 = append(a1, "Green")
+a1 = append(a1, "Blue")
+fmt.Println(a1[0], a1[1], a1[2])
+</pre>
+<p><b>len()</b> は配列やスライスの長さ(length)、<b>cap()</b> は容量(capacity)を求めます。長さは実際に使用されている数、容量はメモリ上に確保されている数です。容量を超えると、倍の容量のメモリが別に確保され、既存データがコピーされます。</p>
+<pre class="c">a := []int{}
+for i := 0; i &lt; 10; i++ {
+    a = append(a, i)
+    fmt.Println(<em>len(a)</em>, <em>cap(a)</em>)
+}
+</pre>
+<p>スライスの場合、<b>make(</b>スライス型, 初期個数, 初期容量<b>)</b> を用いたメモリの確保ができます。初期容量を省略した場合は初期個数と同じ容量が確保されます。容量をあらかじめ確保しておくことで、容量超過時の再確保を減らして速度を速めることができます。</p>
+<pre class="c">bufa := <em>make([]byte, 0, 1024)</em>
+</pre>
+</div>
+
+<h4 id="map">マップ(map)</h4>
+<div class="i">
+<p>「<b>map[</b>キーの型<b>]</b>値の型」 を用いて連想配列のようなマップを使用することができます。</p>
+<pre class="c"><span class="cm">// マップを定義する</span>
+<em>a1 := map[string]int{</em>
+    "x": 100,
+    "y": 200,			<span class="cm">// 改行する場合はカンマ必須</span>
+<em>}</em>
+
+<span class="cm">// マップを参照する</span>
+fmt.Println(<em>a1["x"]</em>)
+
+<span class="cm">// マップに要素を加える</span>
+<em>a1["z"] = 300</em>
+
+<span class="cm">// マップの要素を削除する</span>
+<em>delete(a1, "z")</em>
+
+<span class="cm">// マップの長さを求める</span>
+fmt.Println(<em>len(a1)</em>)
+
+<span class="cm">// マップに要素が存在するかどうかを調べる</span>
+_, <em>ok</em> := a1["z"]
+if <em>ok</em> {
+    fmt.Println("Exist")
+} else {
+    fmt.Println("Not exist")
+}
+
+<span class="cm">// マップをループ処理する</span>
+<em>for key, value := range a1 {</em>
+    fmt.Printf("%s=%d\n", key, value)
+<em>}</em>
+</pre>
+</div>
+
+<h4 id="if">If文(if)</h4>
+<div class="i">
+<p>「<b>if</b> 条件 <b>{</b> 処理 <b>}</b>」 は条件が真の時のみ処理を実行します。条件を (...) で囲む必要はありません。{ ... } の中括弧は必須です。</p>
+<pre class="c"><em>if</em> x &gt; max <em>{</em>
+    max = x
+<em>}</em>
+</pre>
+<p><b>else</b> や <b>else if</b> を使用することができます。</p>
+<pre class="c">if x &gt; y {
+    return "Big"
+} <em>else if</em> x &lt; y {
+    return "Small"
+} <em>else</em> {
+    return "Equal"
+}
+</pre>
+</div>
+
+<h4 id="switch">Switch文(switch)</h4>
+<div class="i">
+<p>「<b>switch</b> 式 <b>{</b> ... <b>}</b>」は、式の値によって処理を振り分けます。</p>
+<pre class="c"><em>switch mode {</em>
+<em>case "running":</em>
+    return "実行中"
+<em>case "stop":</em>
+    return "停止中"
+<em>default:</em>
+    return "不明"
+<em>}</em>
+</pre>
+<p>「<b>switch</b> <b>{</b> ... <b>}</b>」では、<b>case</b> 分で条件を記述することもできます。</p>
+<pre class="c">switch {
+<em>case x &gt; y:</em>
+    return "Big"
+<em>case x &lt; y:</em>
+    return "Small"
+default:
+    return "Equal"
+}
+</pre>
+<p>他の言語にあるような <b>break</b> 文は必要ありません。逆に、次の条件の処理も実行するには <b>fallthrough</b> を用います。下記の例は dayOfWeek が "Sat" または "Sun" であれば "Horiday" を返します。</p>
+<pre class="c">switch dayOfWeek {
+case "sat":
+    <em>fallthrough</em>
+case "sun":
+    return "Horiday"
+default:
+    return "Weekday"
+}
+</pre>
+</div>
+
+<h4 id="for">For文(for)</h4>
+<div class="i">
+<p>Go言語には <b>while</b>文が無く、繰り返し処理はすべて <b>for</b> を用います。下記の例は x が y よりも小さい間、処理を繰り返します。</p>
+<pre class="c"><em>for x &lt; y {</em>
+    x++
+<em>}</em>
+</pre>
+<p>「<b>for</b> 開始処理<b>;</b> 条件<b>;</b> 後処理 <b>{</b> 処理 <b>}</b>」は、最初に開始処理を行い、条件が真の間、処理と後処理を繰り返し実行します。</p>
+<pre class="c"><em>for i := 0; i &lt; 10; i++ {</em>
+    fmt.Println(i)
+<em>}</em>
+</pre>
+<p>条件を省略すると無限ループになります。<b>continue</b> は次のループを繰り返します。<b>break</b> はループを抜けます。</p>
+<pre class="c">n := 0
+for {
+    n++
+    if n &gt; 10 {
+        <em>break</em>
+    } else if n % 2 == 1 {
+        <em>continue</em>
+    } else {
+        fmt.Println(n)
+    }
+}
+</pre>
+<p>配列やスライスなどイテラブルなものに対しては <b>range</b> を用いてループ処理することができます。</p>
+<pre class="c">colors := [...]string{"Red", "Green", "Blue"}
+
+<em>for i, color := range colors {</em>
+    fmt.Printf("%d: %s\n", i, color)
+<em>}</em>
+</pre>
+</div>
+
+<h4 id="goto">Goto文(goto)</h4>
+<div class="i">
+<p><b>goto</b> 文は指定したラベルにジャンプします。Go言語には <b>try</b> <b>catch</b> <b>raise</b> のような例外処理構文はサポートされていませんので、似たようなことをやるとすると下記の様になります。</p>
+<pre class="c">func funcA() (int, string) {
+    err := nil
+    filename := ""
+    data := ""
+
+    err, filename = GetFileName()
+    if err != nil {
+        <em>goto Done</em>
+    }
+
+    err, data = ReadFile(filename)
+    if err != nil {
+        <em>goto Done</em>
+    }
+
+<em>Done:</em>
+    return err, data
+}
+</pre>
+</div>
+
+<h4 id="functions">関数(func)</h4>
+<div class="i">
+<p><b>func</b> は関数を定義します。<b>return</b> には関数の戻り値を指定します。</p>
+<pre class="c"><em>func</em> add(x int, y int) int {
+    <em>return</em> x + y
+}
+
+func main() {
+    fmt.Println(add(5, 3))		<span class="cm">// =&gt; 8</span>
+}
+</pre>
+<p>複数の値を返却することもできます。複数の場合は型名は (...) で囲む必要があります。</p>
+<pre class="c">func addMinus(x int, y int) (int, int) {
+    return x + y, x - y
+}
+</pre>
+<p>複数の値を返却する関数などで、不要な戻り値がある場合は、ブランク変数 <b>_</b> を使用することができます。</p>
+<pre class="c"><span class="cm">// funcA() は x と y を返却するが、x は無視して y のみ受け取る</span>
+_, y := funcA()
+</pre>
+<p><b>...</b> を用いることで可変引数を実現することができます。</p>
+<pre class="c">func funcA(a int, <em>b ... int</em>) {
+    fmt.Printf("a=%d\n", a)
+    for i, num := range b {
+        fmt.Printf("b[%d]=%d\n", i, num)
+    }
+}
+
+func main() {
+    funcA(1, 2, 3, 4, 5)
+}
+</pre>
+</div>
+
+<h4 id="structures">構造体(struct)</h4>
+<div class="i">
+<p>Go言語では、クラス(class)の代わりに <b>構造体(struct)</b> を使用します。構造体にはメンバ変数のみを定義し、クラスメソッドに相当する関数は関数名の前に <b>(</b>thisに相当する変数 <b>*</b>構造体名<b>)</b> をつけて定義します。</p>
+<pre class="c"><em>type Person struct</em> {
+    name string
+    age int
+}
+
+func <em>(p *Person)</em> SetPerson(name string, age int) {
+    p.name = name
+    p.age = age
+}
+
+func <em>(p *Person)</em> GetPerson() (string, int) {
+    return p.name + "(" + p.age + ")"
+}
+
+func main() {
+    var p1 <em>Person</em>
+    p1.SetPerson("Yamada", 26)
+    name, age = p1.GetPerson()
+}
+</pre>
+<p>構造体のメンバの内、大文字で始まるものはパッケージ外からアクセス可能、小文字で始まるものはパッケージ外からアクセス不可となります。</p>
+<pre class="c">type Person struct {
+    Name string	<span class="cm">// 外部からアクセス可能</span>
+    Age int		<span class="cm">// 外部からアクセス可能</span>
+    status int		<span class="cm">// 外部からアクセス不可</span>
+}
+</pre>
+<p>構造体を使用する際は、下記の様にパラメータを初期化することができます。</p>
+<pre class="c">a1 := Person{<em>"Yamada", 26</em>}			<span class="cm">// 順序通りに初期化</span>
+a2 := Person{<em>name: "Tanaka", age: 32</em>}		<span class="cm">// 名前で初期化</span>
+</pre>
+</div>
+
+<h4 id="interfaces">インタフェース(interface)</h4>
+<div class="i">
+<p><b>インタフェース(interface)</b> はポリモーフィズムを実装するための機能です。下記の例では構造体 Person も、構造体 Book も ToString() というメソッドと PrintOut() というメソッドを実装しています。</p>
+<pre class="c">type Person struct {
+    name string
+}
+func (p Person) ToString() string {
+    return p.name
+}
+<em>func (p Person) PrintOut() {
+    fmt.Println(p.ToString())
+}</em>
+
+type Book struct {
+    title string
+}
+func (b Book) ToString() string {
+    return b.title
+}
+<em>func (b Book) PrintOut() {
+    fmt.Println(b.ToString())
+}</em>
+
+func main() {
+    a1 := Person {name: "山田太郎"}
+    a2 := Book {title: "吾輩は猫である"}
+    a1.PrintOut()
+    a2.PrintOut()
+}
+</pre>
+<p>ToString() は中身が異なるので仕方ないですが、PrintOut() は中身も同じなので、インタフェースを用いてひとつの関数にまとめることができます。Printable というインタフェースは、ToString() というメソッドをサポートしている構造体であれば、自動的に適用することが可能となります。</p>
+<pre class="c">package main
+
+import "fmt"
+
+<em>type Printable interface {
+    ToString() string
+}
+func PrintOut(p Printable) {
+    fmt.Println(p.ToString())
+}</em>
+
+type Person struct {
+    name string
+}
+func (p Person) ToString() string {
+    return p.name
+}
+
+type Book struct {
+    title string
+}
+func (b Book) ToString() string {
+    return b.title
+}
+
+func main() {
+    a1 := Person {name: "山田太郎"}
+    a2 := Book {title: "吾輩は猫である"}
+    PrintOut(a1)
+    PrintOut(a2)
+}
+</pre>
+</div>
+
+<h4 id="interface-any">interface {}型</h4>
+<div class="i">
+<p>関数の無いインタフェース <b>interface {}</b> は、<b>any</b> 型のように使用することができます。下記の関数はどんな型の引数でも受け取ることができます。</p>
+<pre class="c">func funcA(<em>a interface {}</em>) {
+    ...
+}
+</pre>
+<p><b>.(</b>型名<b>)</b> は、<b>interface{}</b> 型の変数を他の型に変換します。</p>
+<pre class="c">func funcA(a interface{}) {
+    fmt.Printf("%d\n", <em>a.(int)</em>)
+}
+</pre>
+<p>型変換の第二戻り値は、型変換可能かどうかを返します。オブジェクトが interface { ... } で定義したインタフェースを実装しているかどうかを調べることができます。</p>
+<pre class="c">func PrintOut(a interface{}) {
+    <span class="cm">// aをPrintableインタフェースを実装したオブジェクトに変換してみる</span>
+    <em>q, ok := a.(Printable)</em>
+    if ok {
+        <span class="cm">// 変換できたらそのインタフェースを呼び出す</span>
+        fmt.Println(q.ToString())
+    } else {
+        fmt.Println("Not printable.")
+    }
+}
+</pre>
+<p><b>switch</b> 変数<b>.(type) {</b> ... <b>}</b> によって、型を判断することもできます。</p>
+<pre class="c">func funcA(a interface{}) {
+    <em>switch a.(type) {</em>
+    case bool:
+        fmt.Printf("%t\n", a)
+    case int:
+        fmt.Printf("%d\n", a)
+    case string:
+        fmt.Printf("%s\n", a)
+    <em>}</em>
+}
+</pre>
+<p><b>interface {}</b> は <b>any</b> の様に使えるという特徴を生かし、任意の型の値を持つマップを定義することもできます。</p>
+<pre class="c"><em>p1 := map[string]interface{} {</em>
+    "name": "Yamada",
+    "age": 26,
+<em>}</em>
+</pre>
+<p>下記の様にすれば階層構造を持つ Python の <b>dict</b> もどきを定義することができます。p1["address"]["tel"] のように参照できないのが残念ですが。</p>
+<pre class="c"><em>type any interface{}</em>
+<em>type dict map[string]any</em>
+
+p1 := <em>dict</em> {
+    "name": "Yamada",
+    "age": 26,
+    "address": <em>dict</em> {
+        "zip": "123-4567",
+        "tel": "012-3456-7890",
+    },
+}
+name := p1["name"]
+tel := p1["address"].(dict)["tel"]	<span class="cm">// anyをdictに変換してから参照</span>
+</pre>
+</div>
+
+<h4 id="pointer">ポインタ(pointer)</h4>
+<div class="i">
+<p>ポインタとは、変数が格納されているメモリのアドレスです。C言語と同様に、オブジェクトのポインタを参照するには <b>&amp;</b> を、ポインタの中身を参照するには <b>*</b> を用います。</p>
+<pre class="c">var a1 int		<span class="cm">// int型変数a1を定義</span>
+var p1 *int;		<span class="cm">// intへのポインタ変数p1を定義</span>
+
+<em>p1 = &amp;a1</em>		<span class="cm">// p1にa1のポインタを設定</span>
+<em>*p1 = 123</em>		<span class="cm">// ポインタの中身(つまりa1)に123を代入</span>
+fmt.Println(a1)	<span class="cm">// =&gt; 123</span>
+</pre>
+<p>変数の値を渡すことを「値渡し」、変数のポインタを渡すことを「参照渡し」と呼びます。値渡しでは値のコピーしか渡していないので元の変数を変更することはできませんが、ポインタ渡しであれば関数の中で変数の値を変更することが可能となります。</p>
+<pre class="c">func main() {
+    var a1 int = 123
+    var a2 int = 123
+    <em>fn(a1, &amp;a2)</em>		<span class="cm">// a1は値渡し、a2は参照渡し</span>
+    fmt.Println(a1, a2)	<span class="cm">// =&gt; 123 456</span>
+}
+
+func fn(b1 int, b2 *int) {
+    b1 = 456
+    *b2 = 456
+}
+</pre>
+<p>演算子 <b>.</b> は、構造体のメンバ変数でも、ポインタが指し示す構造体のメンバ辺でもアクセスすることができます。</p>
+<pre class="c">a1 := Person{"Tanaka", 26}	<span class="cm">// 構造体Personのオブジェクトa1を確保して初期化</span>
+p1 := &amp;a1			<span class="cm">// 構造体a1へのポインタをp1に格納</span>
+fmt.Println(a1.name)		<span class="cm">// メンバ変数には左記のようにアクセス</span>
+fmt.Println((*p1).name)	<span class="cm">// ポインタpの中身(後続体)のメンバ変数には左記のようにアクセス</span>
+fmt.Println(p1.name)		<span class="cm">// ただし、Go言語ではこれを、左記のようにも記述できる</span>
+</pre>
+</div>
+
+<h4 id="new">領域確保(new)</h4>
+<div class="i">
+<p><b>new()</b> を用いて領域を動的に確保し、その領域へのポインタを得ることができます。確保した領域は参照されなくなった後にでガベージコレクションにより自動的に開放されます。</p>
+<pre class="c">type Book struct {
+    title string
+}
+
+func main() {
+    bookList := []*Book{}
+
+    for i := 0; i &lt; 10; i++ {
+        <em>book := new(Book)</em>
+        book.title = fmt.Sprintf("Title#%d", i)
+        bookList = append(bookLlist, book)
+    }
+    for _, book := range bookList {
+        fmt.Println(book.title)
+    }
+}
+</pre>
+</div>
+
+<h4 id="defer">遅延実行(defer)</h4>
+<div class="i">
+<p>「<b>defer</b> 処理」は、関数から戻る直前に処理を遅延実行します。リソースを忘れずに解放する際によく用いられます。</p>
+<pre class="c">func funcA() {
+    fp, err := os.Open("sample.txt")
+    if err != nil {
+        return
+    }
+    <em>defer fp.Close()</em>
+
+    for {
+        ...
+    }
+</pre>
+</div>
+
+<h4 id="import">インポート(import)</h4>
+<div class="i">
+<p><b>import</b> はパッケージをインポートします。</p>
+<pre class="c"><em>import "fmt"</em>
+</pre>
+<p>下記の様に複数のパッケージをインポートすることもできます。</p>
+<pre class="c"><em>import (</em>
+    "os"
+    "fmt"
+<em>)</em>
+</pre>
+<p><b>go get</b> コマンドを用いて、環境変数 <b>GOPATH</b> 配下に外部のパッケージをインストールすることができます。標準では、Goパッケージがインストールされた場所 (/usr/local/go/src)、$HOME/go/src、$GOPATH/src を検索対象とします。</p>
+<pre class="c">$ <em>export GOPATH=$HOME/go</em>
+$ <em>go get github.com/google/go-cmp/cmp</em>
+</pre>
+<p>インストールしたパッケージは次のようにインポートします。</p>
+<pre class="c"><em>import "github.com/google/go-cmp/cmp"</em>
+</pre>
+<p>インポート時にパッケージの別名をつけることができます。これによりパッケージ名の重複の問題を回避することが可能です。</p>
+<pre class="c">import <em>gcmp</em> "github.com/google/go-cmp/cmp"
+</pre>
+</div>
+
+<h4 id="package">パッケージ(package)</h4>
+<div class="i">
+<p>自作パッケージの例を下記に示します。</p>
+<pre class="c">$HOME
+ └ go
+   └ src
+     ├ sample.go
+     └ local
+       └ mypkg
+         └ mypkg.go
+</pre>
+<p>mypkg.go ファイルを次の内容で作成します。<b>package</b> でパッケージ名を宣言します。</p>
+<pre class="c"><em>package mypkg</em>
+
+import "fmt"
+
+func FuncA() {			<span class="cm">// 大文字で始まるものは自動的にエクスポートされる</span>
+    fmt.Println("FuncA()")
+}
+
+func funcB() {			<span class="cm">// 小文字で始まるものはエクスポートされない</span>
+    fmt.Println("funcB()")
+}
+</pre>
+<p>sample.go ファイルを次の内容で作成します。大文字で始まる FunxA() は公開されているので使用できますが、小文字で始まる funcB() は非公開なので使用することができません。</p>
+<pre class="c">package main
+
+import "local/mypkg"
+
+mypkg.FuncA()		<span class="cm">// 呼び出せる</span>
+mypkt.funcB()		<span class="cm">// Error</span>
+</pre>
+</div>
+
+<h4 id="goroutines">ゴルーチン(Goroutine)</h4>
+<div class="i">
+<p>ゴルーチン(goroutine)はGo言語における並行処理を実現するもので、スレッドよりも高速に並行処理を実現することができます。下記の例では、メインの処理を実行しながら、並行して funcA() ゴルーチンを <b>go</b> により実行しています。</p>
+<pre class="c">func funcA() {
+    for i := 0; i &lt; 10; i++ {
+        fmt.Print("A")
+        time.Sleep(10 * time.Millisecond)
+    }
+}
+
+func main() {
+    <em>go funcA()</em>
+    for i := 0; i &lt; 10; i++ {
+        fmt.Print("M")
+        time.Sleep(20 * time.Millisecond)
+    }
+}
+</pre>
+<p>下記の例ではチャネルを用いてゴルーチンの終了を待ち合わせる例です。<b>chan</b> はチャネルを生成します。<b>&lt;-</b> はチャネルにメッセージを送受信します。</p>
+<pre class="c">func funcA(chA chan &lt;- string) {
+    time.Sleep(3 * time.Second)
+    <em>chA &lt;- "Finished"</em>		<span class="cm">// チャネルにメッセージを送信する</span>
+}
+
+func main() {
+    <em>chA := make(chan string)</em>	<span class="cm">// チャネルを作成する</span>
+    defer close(chA)		<span class="cm">// 使い終わったらクローズする</span>
+    go funcA(chA)		<span class="cm">// チャネルをゴルーチンに渡す</span>
+    <em>msg := &lt;- chA</em>		<span class="cm">// チャネルからメッセージを受信する</span>
+    fmt.Println(msg)
+}
+</pre>
+<p>次の例では <b>select</b> を用いて、ゴルーチン funcA() と funcB() 双方の待ち合わせを行います。</p>
+<pre class="c">func funcA(chA chan &lt;- string) {
+    time.Sleep(1 * time.Second)
+    chA &lt;- "funcA Finished"
+}
+
+func funcB(chB chan &lt;- string) {
+    time.Sleep(2 * time.Second)
+    chB &lt;- "funcB Finished"
+}
+
+func main() {
+    chA := make(chan string)
+    chB := make(chan string)
+    defer close(chA)
+    defer close(chB)
+    finflagA := false
+    finflagB := false
+    go funcA(chA)
+    go funcB(chB)
+    for {
+        <em>select {</em>
+        <em>case msg := &lt;- chA:</em>
+            finflagA = true
+            fmt.Println(msg)
+        <em>case msg := &lt;- chB:</em>
+            finflagB = true
+            fmt.Println(msg)
+        <em>}</em>
+        if finflagA &amp;&amp; finflagB {
+            break
+        }
+    }
+}
+</pre>
+</div>
+
+<h4 id="links">リンク</h4>
+<div class="i">
+<ul>
+<li><a target="_top" href="https://golang.org/">本家サイト (英語)</a>
+</li></ul>
+</div>
+
+<!--
+●Go Playground
+●フォーマット(gofmt)
+●GOPATH
+●ブランク識別子 name, _ = funcA()
+●可変引数
+●型不定引数
+●パッケージの別名
+●make()
+●構造体の初期値(book:=Book{xxx})
+●(*p).name 1とp.nameが同じ
+△文字列の連結
+・プリミティブ型にメソッドを追加する
+・匿名フィールド
+・クラスの継承
+-->
+
+<hr>
+<div>Copyright (C) 2020-2022 杜甫々</div>
+<div>初版:2020年5月17日 最終更新:2022年3月27日</div>
+<div>http://www.tohoho-web.com/ex/golang.html</div>
+
+
+</body></html>
