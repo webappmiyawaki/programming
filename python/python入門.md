@@ -179,6 +179,15 @@ d = {'B': 222, 'A': 111, 'D': 333, 'C': 444}
 sort_by_value = dict(sorted(d.items(), key=get_values))
 print(f'Valueでソートした辞書：{sort_by_value}')
 
+# valueが奇数の要素のみ削除
+d = {'B': 222, 'A': 111, 'D': 444, 'C': 333}
+new_d = d.copy()
+for k, v in d.items():
+    if v % 2 != 0:
+        del new_d[k]
+        
+print(f'奇数を削除した辞書 : {new_d}')
+
 
 # スライド　sequence[start:stop:step]
 s = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -356,6 +365,14 @@ print(my_sum(1, 2, 3, 4))
 
 # 36
 print(my_sum(1, 2, 3, 4, 5, 6, 7, 8))
+```
+
+boolリストでFalseの数をカウント
+
+```python
+l = [False, True, False, False, True]
+c = len(l) - sum(l)
+print(f'Falseの数：{c}')
 ```
 
 引数にリスト、タプル、辞書を展開して渡す
@@ -670,3 +687,25 @@ f-string
 外部ライブラリのインストール
 MicroPython
 R言語
+
+総まとめの演習問題
+
+1. ジャンケン
+   
+2. json
+>JSON文字列を辞書に変換: json.loads()
+順番を保持: 引数object_pairs_hook
+バイト列を変換
+JSONファイルを辞書として読み込み: json.load()
+読み込んだ辞書の値の取得・変更・削除・追加
+辞書をJSON文字列として整形して出力: json.dumps()
+区切り文字を指定: 引数separators
+インデントを指定: 引数indent
+キーでソート: 引数sort_keys
+Unicodeエスケープ指定: 引数ensure_ascii
+辞書をJSONファイルとして保存: json.dump()
+JSONファイルの新規作成・更新（修正・追記）
+JSONファイル・文字列を扱う上での注意点
+Unicodeエスケープ
+引用符
+<https://note.nkmk.me/python-json-load-dump/>
