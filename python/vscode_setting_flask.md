@@ -6,6 +6,7 @@
 -scriptフォルダ等作成される
 
 すでにフォルダがある場合
+venv（仮想化用に使われるフォルダ）をvenvコマンドで作る
 
 ```console
 python -m venv venv 
@@ -18,9 +19,30 @@ python -m venv venv
 ```
 
 requirements.txt（フォルダに注意）
+中身（2022/05/05）
+
+```Text
+click==8.1.3
+colorama==0.4.4
+Flask==2.1.2
+Flask-Login==0.6.1
+Flask-SQLAlchemy==2.5.1
+greenlet==1.1.2
+importlib-metadata==4.11.3
+itsdangerous==2.1.2
+Jinja2==3.1.2
+MarkupSafe==2.1.1
+pytz==2022.1
+SQLAlchemy==1.4.36
+Werkzeug==2.1.2
+zipp==3.8.0
+```
 
 ```console
+# 設定書き出し時
 pip freeze > requirements.txt
+
+# 設定読み込み時
 pip install -r requirements.txt
 ```
 
@@ -46,7 +68,7 @@ VSCodeの setting.json を開き、以下のように記述しちゃいましょ
 >pip install flask-sqlalchemy
 
 対話モード実行
->python3
+>python
 
 app.py内で定義したflask_sqlalchemyのインスタンスであるdb変数をインポート
 >from app import db
@@ -54,10 +76,25 @@ app.py内で定義したflask_sqlalchemyのインスタンスであるdb変数�
 app.py内のBlogArticleクラスに対応したDBのテーブルが作成
 >db.create_all()
 
+2. Flaskのインストール基本構成
 
-
-2. Flaskのインストール
-
+```Text
+(app名)
+static（css,javascrip用フォルダ）
+    - css
+    - javascript
+templates
+    - base.html
+    - create.html
+    - index.html
+    - login.html
+    - signup.html
+    - update.html 
+venv(仮想化用のexeが入ってるフォルダ)
+app.py（実行ファイル）
+blog.db（データ登録用データベース）
+requirements.txt（設定読み込み用ファイル）
+```
 
 3. コードの記述
 
