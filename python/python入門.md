@@ -527,123 +527,148 @@ input01.caesar_composite()
 
 ### 内包表記
 
-    fizzbuzz問題を内包表記で
+fizzbuzz問題を内包表記で
 
-    ```python
-    def fizz_buzz(n):
-    num_list = ['FizzBuzz' if i % 15 == 0
-                else 'Fizz' if i % 3 == 0
-                else 'Buzz' if i % 5 == 0
-                else i
-                for i in range(1, n, 1)]
-    return num_list
+```python
+def fizz_buzz(n):
+num_list = ['FizzBuzz' if i % 15 == 0
+            else 'Fizz' if i % 3 == 0
+            else 'Buzz' if i % 5 == 0
+            else i
+            for i in range(1, n, 1)]
+return num_list
 
 
-    print(fizz_buzz(100), end="\n")
-    ```
+print(fizz_buzz(100), end="\n")
+```
 
 ### ラムダ式
 
-    ```python
-    def calc(base, height):
-    return base * height / 2
+```python
+def calc(base, height):
+return base * height / 2
 
 
-    print(calc(2, 2))
+print(calc(2, 2))
 
-    num = (lambda base, height: base * height / 2)(5, 10)
-    print(num)
+num = (lambda base, height: base * height / 2)(5, 10)
+print(num)
 
-    # 小文字のリストを大文字のリストにするlambda処理
-    lower_students = ['a', 'b', 'c', 'd']
-    upper_students = (lambda student_list: [student.upper() for student in student_list])(lower_students)
-    print(upper_students)
-    ```
+# 小文字のリストを大文字のリストにするlambda処理
+lower_students = ['a', 'b', 'c', 'd']
+upper_students = (lambda student_list: [student.upper() for student in student_list])(lower_students)
+print(upper_students)
+```
 
 ### 可変長引数
 
 ### デコレータ
 
-    # 関数内関数
+### 関数内関数
 
-    ```python
-    def func1():
-        print('func1')
-
-
-    def func2(f):
-        # 関数内関数
-        def wrapper():
-            print('start')
-            f()
-            print('end')
-        return wrapper
+```python
+def func1():
+    print('func1')
 
 
-    # func2(func1)()
-    func = func2(func1)
-    func()
-    ```
-
-    # @を使う
-
-    ```python
-    def func2(f):
+def func2(f):
     # 関数内関数
     def wrapper():
         print('start')
         f()
         print('end')
-
     return wrapper
 
 
-    # func2でデコレート。メイン処理はfunc1
-    @func2
-    def func1():
-        print('func1')
+# func2(func1)()
+func = func2(func1)
+func()
+```
+
+### @を使う
+
+```python
+def func2(f):
+# 関数内関数
+def wrapper():
+    print('start')
+    f()
+    print('end')
+
+return wrapper
 
 
-    func1()
-    ```
-
-    # 可変長引数対応デコレータ
-
-    ```python
-    def func2(f):
-    def wrapper(*args, **kwargs):
-        print('start')
-        f(*args, **kwargs)
-        print('end')
-    return wrapper
+# func2でデコレート。メイン処理はfunc1
+@func2
+def func1():
+    print('func1')
 
 
-    @func2
-    def func1(*args, **kwargs):
-        args_ary = [(str(s)) for s in args]
-        kwargs_ary = [(str(s)) for s in kwargs]
-        print('func1' + "".join(args_ary) + "".join(kwargs_ary))
+func1()
+```
+
+### 可変長引数対応デコレータ
+
+```python
+def func2(f):
+def wrapper(*args, **kwargs):
+    print('start')
+    f(*args, **kwargs)
+    print('end')
+return wrapper
 
 
-    func1('memo1', 'memo2')
-    ```
+@func2
+def func1(*args, **kwargs):
+    args_ary = [(str(s)) for s in args]
+    kwargs_ary = [(str(s)) for s in kwargs]
+    print('func1' + "".join(args_ary) + "".join(kwargs_ary))
+
+
+func1('memo1', 'memo2')
+```
+
+### func2に引数を設定したデコレータ
+
+```python
+n=3
+
+def func2(n:int):
+    def _tag(f):
+        def wrapper(t1, t2):
+            print('before main')
+            t1 *= n
+            f(t1, t2)
+            t2*= n
+            print('abter main')
+        return wrapper
+    return _tag
+
+@func2(n)
+def func1(t1, t2):
+    print(f't1={t1},t2={t2} hello')
+
+# func2(func1,3)('a','b')
+func1('a','b')
+```
+
 
 ### Type Hints（型ヒント）
 
-    現状は警告のみ（2022/05/03）
+現状は警告のみ（2022/05/03）
 
-    ```python
-    def calc_tax_price(p: int, t: float) -> int:
-    return int(p * t)
-
-
-    price: int = 1000
-    tax: float = 1.1
+```python
+def calc_tax_price(p: int, t: float) -> int:
+return int(p * t)
 
 
-    if __name__ == "__main__":
-        print(calc_tax_price(price, tax))
-    ```
+price: int = 1000
+tax: float = 1.1
+
+
+if __name__ == "__main__":
+    print(calc_tax_price(price, tax))
+```
 
 
 
